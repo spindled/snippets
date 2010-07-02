@@ -1,0 +1,19 @@
+<h1>Editing snippet</h1>
+
+<% form_for(@snippet) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+	<%= f.select(:language, supported_languages)%></br>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @snippet %> |
+<%= link_to 'Back', snippets_path %>
