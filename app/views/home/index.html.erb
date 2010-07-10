@@ -8,13 +8,19 @@
 <% @snippets.each do |snippet| %>
   <tr>
     <td><%= coderay(snippet.content, snippet.language) %></td>
-    <td><%= link_to 'Show', snippet %></td>
-    <td><%= link_to 'Edit', edit_snippet_path(snippet) %></td>
-    <td><%= link_to 'Destroy', snippet, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% if current_user %>
+      <td><%= link_to 'Show', snippet %></td>
+      <td><%= link_to 'Edit', edit_snippet_path(snippet) %></td>
+      <td><%= link_to 'Destroy', snippet, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New snippet', new_snippet_path %>
+<% if current_user %>
+	<%= link_to 'New snippet', new_snippet_path %>
+<% else %>
+	<h2>Login to add a snippet</h2>
+<% end %>	

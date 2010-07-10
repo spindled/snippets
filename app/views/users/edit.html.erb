@@ -1,1 +1,2 @@
-<%= render @user %>  
+<%= render @user %>  <br/>
+<%= @user.username %> has authored <%= pluralize(@user.snippets.count, 'post') %> 

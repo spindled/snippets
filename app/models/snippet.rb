@@ -7,4 +7,6 @@ class Snippet < ActiveRecord::Base
   
   validates_presence_of :content
   validates_inclusion_of :language, :in => LANGUAGES
+  
+  belongs_to :author, :class_name => "User", :foreign_key => "author_id"
 end

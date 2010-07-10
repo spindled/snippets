@@ -41,6 +41,8 @@ class SnippetsController < ApplicationController
   # POST /snippets.xml
   def create
     @snippet = Snippet.new(params[:snippet])
+    @snippet.author = current_user
+    current_user.snippets << @snippet
 
     respond_to do |format|
       if @snippet.save
