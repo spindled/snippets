@@ -5,26 +5,120 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Snippets: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold', 'coderay' %>
+  <%= stylesheet_link_tag 'coderay' %>
+  <link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print">
+  <!--[if lt IE 8]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen,projection"><![endif]-->
+<link rel="stylesheet" href="/stylesheets/blueprint/plugins/buttons/screen.css" type="text/css" media="screen, projection">
   <style type="text/css">
-	div#user_nav { float: right; font-size: 0.9em; }
+	#head {
+		height: 60px;
+		background: url("/images/header_bg.gif") repeat-x scroll 0 100%;
+	}
+	#head h1 {
+		font-weight: bold;
+		font-size: 3.5em;
+		margin: 0;
+		display: inline;
+	}
+	#footer{
+		height: 60px;
+		background-color: darkgray;
+		border-top:5px solid #CCCCCC;
+	}
+	.content {
+      width: 950px;
+	  margin:0 auto;
+	}
+	.logo{
+		float:left;
+		padding-top: 3px;
+
+	}
+	.usernav{
+		float:right;
+		padding-top: 6px;
+	}
+	.usernav2{
+		float:right;
+		padding-top: 6px;
+		clear: right;
+	}
+	.usernav li.first {
+	border:medium none;
+	#padding-right: 1em;
+	}
+	.usernav ul {
+		list-style: none;
+		margin: 0;
+	}
+	.usernav li {
+	border-left:1px solid #CCCCCC;
+	#display:inline;
+	#margin-left:9px;
+	#padding-left:10px;
+	float:left;
+	}
+	.usernav a {
+		width: 7em;
+		display: block;
+		text-align: center;
+	}
+	.usernav a:hover{
+		background-color:#1D64AD;
+		color:#FFFFFF;
+		text-decoration:none;
+	}
+	.usernav li span.username{
+		padding-right: 1em;
+	}
   </style>
 </head>
 <body>
+  <div id="head">
+	<div class="content clearfix">
+	  <div class="logo">	
+	    <h1 style="color:green">has_many</h1><h1 style="color:#000033"> :codes</h1>
+	  </div>
+	  <div class="usernav">	
+		<ul>
+		 <% if current_user %>  
+		   <li class="first"><span class="username"><%= current_user.username %></span></li>
+		   <li><%= link_to "Edit profile", edit_user_path(:current) %></li>
+		   <li><%= link_to "Logout", logout_path %></li>  
+		 <% else %>  
+		   <li class="first"><%= link_to "Register", new_user_path %> </li>  
+		   <li><%= link_to "Log in", login_path %>  </li>
+		 <% end %>
+		</ul>
+	  </div>
+	<div class="usernav2">--Search Input--</div>	
+    </div>
+  </div>	
 
-	<div id="user_nav">  
-	  <% if current_user %>  
-	    <%= link_to "Edit profile", edit_user_path(:current) %>  
-	    <%= link_to "Logout", logout_path %>  
-	  <% else %>  
-	    <%= link_to "Register", new_user_path %>  
-	    <%= link_to "Log in", login_path %>  
-	  <% end %>  
+<div class="container showgridd">
+	<hr class="space"/>
+	  <div class="span-20">
+		<% if notice %>
+		  <p class="success"><%= notice %></p>
+		<% end %> 
+
+	    <%= yield %>	
+	  </div>
+	  <div class="span-4 last">
+	    <div class="box">
+		  <strong>Popular Tags</strong>
+		</div>	
+	  </div>	
+	  <div class="span-24 last">
+	    Footer	
+	  </div>
+  </div>
+  
+<div id="footer">
+  <div class="content">
+	
 	</div>
-
-<p style="color: green"><%= notice %></p>
-
-<%= yield %>
-
+</div>
 </body>
 </html>

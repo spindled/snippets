@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100710032902) do
+ActiveRecord::Schema.define(:version => 20100717025313) do
 
   create_table "snippets", :force => true do |t|
     t.text     "content"
@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20100710032902) do
     t.datetime "updated_at"
     t.string   "language"
     t.integer  "author_id"
+    t.string   "title"
   end
 
   create_table "users", :force => true do |t|

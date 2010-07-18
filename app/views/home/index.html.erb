@@ -1,18 +1,41 @@
-<h1>Listing snippets</h1>
+<style type="text/css">
+  table.snippets td{
+	border-bottom:1px solid #EFEFEF
+  }
+  table.snippets td.title{
+ 	width:100%;
+	padding-left:1em
+  }
+  table.snippets td.time{
+	white-space: nowrap
+  }
+  .recent {
+	background-color: #E9E9E9;
+	padding-left:1em;
+	font-size:1.2em;
+  }
+  table.snippets td.language{
+	padding:4px 3px;
+  }
+  .language_ruby{
+	background-color: red;
+	text-align: center;
+	color:#FFFFFF;
+	#padding:3px 4px;
+	width: 30px;
+  }
+</style>
 
-<table>
-  <tr>
-    <th>Content</th>
-  </tr>
+<div class="recent"><span class="large">Recent Snippets</strong></div>
+
+<table class="snippets">
 
 <% @snippets.each do |snippet| %>
   <tr>
-    <td><%= coderay(snippet.content, snippet.language) %></td>
-	<% if current_user %>
-      <td><%= link_to 'Show', snippet %></td>
-      <td><%= link_to 'Edit', edit_snippet_path(snippet) %></td>
-      <td><%= link_to 'Destroy', snippet, :confirm => 'Are you sure?', :method => :delete %></td>
-	<% end %>
+    <td class="title"><%= link_to snippet.title, edit_snippet_path(snippet) %></td>
+      <td class="time"><%= snippet.created_at.strftime("%B %d, %Y") %></td>
+      <td class="author"><%= snippet.author.username %></td>
+      <td><div style="background-color:red"><span class="language_<%= snippet.language %>"><%= snippet.language.camelize %></span></div></td>
   </tr>
 <% end %>
 </table>

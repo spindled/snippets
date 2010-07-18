@@ -5,13 +5,36 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>User Sessions: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold'%>
+  <link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print">
+  <!--[if lt IE 8]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen,projection"><![endif]-->
+  <style type="text/css">
+	.logo {
+		padding-top: 50px;
+		text-align: center;
+	}
+	.logo h1 {
+		font-weight: bold;
+		margin: 0;
+		display: inline;
+	}
+  </style>
 </head>
 <body>
+  <div class="container">
+	<div class="span-9 prepend-8 append-7 last logo">
+		<h1 style="color:green">has_many</h1><h1 style="color:#000033"> :codes</h1>
+	</div>	
+	<div class="span-9 prepend-8 append-7 last">
+		<br/>
+		<%= yield %>
+	</div>	
+  </div>
+
 
 <p style="color: green"><%= notice %></p>
 
-<%= yield %>
+
 
 </body>
 </html>

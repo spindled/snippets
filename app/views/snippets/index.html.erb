@@ -1,10 +1,6 @@
-<h1>Listing snippets</h1>
+<h2>Listing snippets</h2>
 
 <table>
-  <tr>
-    <th>Content</th>
-  </tr>
-
 <% @snippets.each do |snippet| %>
   <tr>
     <td><%= coderay(snippet.content, snippet.language) %></td>
