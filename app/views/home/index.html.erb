@@ -1,49 +1,59 @@
 <style type="text/css">
-  table.snippets td{
-	border-bottom:1px solid #EFEFEF
-  }
-  table.snippets td.title{
- 	width:100%;
-	padding-left:1em
-  }
-  table.snippets td.time{
-	white-space: nowrap
-  }
   .recent {
-	background-color: #E9E9E9;
+	#background-color: #6D9CBE;
+	background-color: #2B2B2B;
 	padding-left:1em;
-	font-size:1.2em;
+	color: white;
+	font-weight: bold;
   }
-  table.snippets td.language{
-	padding:4px 3px;
+  .toprounded{
+	-moz-border-radius-topleft:4px;
+	-moz-border-radius-topright:4px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
   }
-  .language_ruby{
-	background-color: red;
-	text-align: center;
-	color:#FFFFFF;
-	#padding:3px 4px;
-	width: 30px;
+  .list-contents {
+	padding-left: .5em;
+	padding-right: .5em;
+  }
+  .list-contents h4 {
+	margin-bottom: .5em;
+  }
+  .list-top {
+	padding-top: .5em;
+  }
+  .list-bottom {
+	border-bottom: 1px dotted #999999;
+	padding-top: .5em;
   }
 </style>
 
-<div class="recent"><span class="large">Recent Snippets</strong></div>
-
-<table class="snippets">
+<div class="span-18 last">
+	<div class="recent toprounded">
+		<span class="large">Recent Snippets</span>
+	</div>	
+</div>
 
 <% @snippets.each do |snippet| %>
-  <tr>
-    <td class="title"><%= link_to snippet.title, edit_snippet_path(snippet) %></td>
-      <td class="time"><%= snippet.created_at.strftime("%B %d, %Y") %></td>
-      <td class="author"><%= snippet.author.username %></td>
-      <td><div style="background-color:red"><span class="language_<%= snippet.language %>"><%= snippet.language.camelize %></span></div></td>
-  </tr>
+<div class="span-15" style="background-color:grary">
+	<div class="list-contents list-top">
+		<h4><%= link_to snippet.title, edit_snippet_path(snippet), :style => "text-decoration: none" %></h4>
+	</div>	
+</div>
+<div class="span-3 last" style="text-align: right">
+	<div class="list-contents list-top">
+		<h4 class="quiet" style="font-weight:bold"><%= snippet.language.camelize %></h4>
+	</div>	
+</div>
+<div class="span-10" style="background-color:grary">
+	<div class="list-contents">
+		tag1, tag2, tag3
+	</div>	
+</div>
+<div class="span-8 last" style="text-align: right">
+	 <div class="list-contents quiet" style="font-style: italic">
+		<%= snippet.author.username %> / <%= time_ago_in_words(snippet.created_at) %> ago
+	 </div>	
+</div>
+<div class="span-18 last list-bottom"></div>
 <% end %>
-</table>
-
-<br />
-
-<% if current_user %>
-	<%= link_to 'New snippet', new_snippet_path %>
-<% else %>
-	<h2>Login to add a snippet</h2>
-<% end %>	

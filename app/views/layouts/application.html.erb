@@ -13,7 +13,8 @@
   <style type="text/css">
 	#head {
 		height: 60px;
-		background: url("/images/header_bg.gif") repeat-x scroll 0 100%;
+		#background: url("/images/header_bg.gif") repeat-x scroll 0 100%;
+		background-color: #2B2B2B;
 	}
 	#head h1 {
 		font-weight: bold;
@@ -23,7 +24,7 @@
 	}
 	#footer{
 		height: 60px;
-		background-color: darkgray;
+		background-color: #2F2F2F;
 		border-top:5px solid #CCCCCC;
 	}
 	.content {
@@ -63,14 +64,43 @@
 		width: 7em;
 		display: block;
 		text-align: center;
+		color: #E6E1DC;
+		font-weight: bold;
 	}
 	.usernav a:hover{
-		background-color:#1D64AD;
-		color:#FFFFFF;
+		background-color:#CC7833;
+		color:#E6E1DC;
 		text-decoration:none;
 	}
 	.usernav li span.username{
 		padding-right: 1em;
+		color: #E6E1DC;
+	}
+	.rounded{
+		-moz-border-radius: 5px; 
+		-webkit-border-radius: 5px;
+	}
+	body {
+	background:transparent url("/images/background.gif") repeat-x scroll left top;
+	width:100%;
+	}
+	#register {
+		margin-top:10px; 
+		background-color:#97AE65;
+		padding:1em
+	}
+	#register a {
+		display: block;
+		padding-left:2px;
+		padding: 2px 2px;
+		margin:0;
+	}
+	#register a:hover {
+		background-color:#CC7833;
+		color:#E6E1DC;
+		text-decoration:none;
+		-moz-border-radius: 3px; 
+		-webkit-border-radius: 3px;
 	}
   </style>
 </head>
@@ -78,7 +108,7 @@
   <div id="head">
 	<div class="content clearfix">
 	  <div class="logo">	
-	    <h1 style="color:green">has_many</h1><h1 style="color:#000033"> :codes</h1>
+	    <h1 style="color:#CC7833">has_many</h1><h1 style="color:white"> :codes</h1>
 	  </div>
 	  <div class="usernav">	
 		<ul>
@@ -98,22 +128,34 @@
 
 <div class="container showgridd">
 	<hr class="space"/>
-	  <div class="span-20">
+	  <div class="span-18">
 		<% if notice %>
 		  <p class="success"><%= notice %></p>
 		<% end %> 
 
-	    <%= yield %>	
+		<div class="span-18 last rounded" style="background-color: white">
+	    	<%= yield %>	
+		</div>
 	  </div>
-	  <div class="span-4 last">
-	    <div class="box">
-		  <strong>Popular Tags</strong>
+	  <% unless current_user %>  
+	  <div class="span-6 last">
+	    <div id="register" class="box rounded">
+		  <strong style="font-size:1.2em;">Share Your Code</strong>
+		  <p style="padding-top:.5em;margin-bottom:.5em;">Create an account and start adding to the code pile.</p>
+		  <%= link_to "Create an account »", login_path %> 
 		</div>	
 	  </div>	
+	  <% end %>
+	  <div class="span-6 last">
+	    <div class="box rounded" style="margin-top:10px; background-color:#97AE65;padding:1em">
+		  <strong style="font-size:1.2em;">Create a profile</strong>
+		  <p>It's free and you'll be able to add your own code snippets.</p>
+		</div>	
+	  </div>
 	  <div class="span-24 last">
 	    Footer	
 	  </div>
-  </div>
+ </div>
   
 <div id="footer">
   <div class="content">
