@@ -26,6 +26,49 @@
 	border-bottom: 1px dotted #999999;
 	padding-top: .5em;
   }
+	.rounded2{
+		-moz-border-radius: 3px; 
+		-webkit-border-radius: 3px;
+	}
+  .tag-list ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+  }
+  .tag-list li{
+	float: left;
+	#padding-right: 1em;
+	margin-left: .1em;
+  }
+	.tag-list a {
+		#width: 7em;
+		display: block;
+		#text-align: center;
+		#color: #E6E1DC;
+		#font-weight: bold;
+		text-decoration:none;
+		padding-left:.5em;
+		padding-right:.5em;
+		-moz-border-radius: 3px; 
+		-webkit-border-radius: 3px;
+	}
+	.tag-list a:hover{
+		background-color:#97AE65;
+		text-decoration:none;
+	}
+	.tag-list li.first {
+	background-color:#E2E2E0;
+	-moz-border-radius: 3px; 
+	-webkit-border-radius: 3px;
+	margin-right:.5em;
+	}
+	.tag-list li.first a{
+	color:gray;
+	}
+	.tag-list li.first a:hover{
+	background-color:gray;
+	color: white;
+	}
 </style>
 
 <div class="span-18 last">
@@ -42,17 +85,22 @@
 </div>
 <div class="span-3 last" style="text-align: right">
 	<div class="list-contents list-top">
-		<h4 class="quiet" style="font-weight:bold"><%= snippet.language.camelize %></h4>
+		
 	</div>	
 </div>
 <div class="span-10" style="background-color:grary">
-	<div class="list-contents">
-		tag1, tag2, tag3
+	<div class="list-contents tag-list">
+		<ul>
+			<li class="first"><a href="#"><%= snippet.language.camelize %></a></li>
+			<li><a href="#">tag1</a></li>
+			<li><a href="#">tag2</a></li>
+			<li><a href="#">tag3</a></li>
+		</ul>
 	</div>	
 </div>
 <div class="span-8 last" style="text-align: right">
 	 <div class="list-contents quiet" style="font-style: italic">
-		<%= snippet.author.username %> / <%= time_ago_in_words(snippet.created_at) %> ago
+		<%= snippet.author.username %> - <%= time_ago_in_words(snippet.created_at) %> ago
 	 </div>	
 </div>
 <div class="span-18 last list-bottom"></div>
