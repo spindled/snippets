@@ -10,6 +10,12 @@ class SnippetsController < ApplicationController
     end
   end
 
+  # GET /snippets
+  def tag
+    @snippets = Snippet.find_tagged_with(params[:id])
+    render 'snippets/index'
+  end
+
   # GET /snippets/1
   # GET /snippets/1.xml
   def show

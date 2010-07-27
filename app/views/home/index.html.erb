@@ -92,9 +92,9 @@
 	<div class="list-contents tag-list">
 		<ul>
 			<li class="first"><a href="#"><%= snippet.language.camelize %></a></li>
-			<li><a href="#">tag1</a></li>
-			<li><a href="#">tag2</a></li>
-			<li><a href="#">tag3</a></li>
+			<% snippet.tag_list.each do |tag| %>
+			<li><%= link_to tag, tag_url(:id => tag) %></li>
+			<% end %>
 		</ul>
 	</div>	
 </div>

@@ -14,6 +14,10 @@
 	<%= f.select(:language, supported_languages)%></br>
   </p>
   <p>
+	<%= f.label :tag_list %><br/>
+	<%= f.text_field :tag_list, :size => 80 %>
+  </p>
+  <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>

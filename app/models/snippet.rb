@@ -1,4 +1,4 @@
-class Snippet < ActiveRecord::Base
+class Snippet < ActiveRecord::Base  
   JAVA = "java"
   RUBY = "ruby"
   JAVASCRIPT = "javascript"
@@ -7,6 +7,8 @@ class Snippet < ActiveRecord::Base
   
   validates_presence_of :content
   validates_inclusion_of :language, :in => LANGUAGES
+  
+  acts_as_taggable
   
   belongs_to :author, :class_name => "User", :foreign_key => "author_id"
 end
