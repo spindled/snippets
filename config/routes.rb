@@ -1,10 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :snippets
-  map.tag '/snippets/tag/:id', :controller => 'snippets', :action => 'tag', :conditions => { :method => :get }
+  map.tag '/snippets/tag/:id', :controller => 'snippets', :action => 'tag'
   map.resources :users
   map.login 'login', :controller => 'user_sessions', :action => 'new'  
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'  
   map.resources :user_sessions
+  map.view_content '/home/view_content/:id', :controller => 'home', :action => 'view_content'
   
   # The priority is based upon order of creation: first created -> highest priority.
 

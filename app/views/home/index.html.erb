@@ -81,11 +81,12 @@
 <div class="span-15" style="background-color:grary">
 	<div class="list-contents list-top">
 		<h4><%= link_to snippet.title, edit_snippet_path(snippet), :style => "text-decoration: none" %></h4>
+		<div id="snippet_<%= snippet.id %>"></div>
 	</div>	
 </div>
 <div class="span-3 last" style="text-align: right">
 	<div class="list-contents list-top">
-		
+		<%= link_to_remote "View", :url => {:action => 'view_content', :id => snippet.id}, :update => 'snippet_' + snippet.id.to_s %>
 	</div>	
 </div>
 <div class="span-10" style="background-color:grary">
