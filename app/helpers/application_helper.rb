@@ -4,7 +4,7 @@ module ApplicationHelper
   include TagsHelper
   
   def coderay(text, language)
-    CodeRay.scan(text, language.to_sym).div(:css => :style)
+    CodeRay.scan(text, language.to_sym).div(:line_numbers => :table, :css => :class)
   end
   
 end
