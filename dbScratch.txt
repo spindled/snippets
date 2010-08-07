@@ -1,0 +1,25 @@
+class User < ActiveRecord::Base
+  has_many :bookmarks
+  has_many :bookmarked_snippets, :class_name => "Snippet", :through => :bookmarks
+  has_many :snippets, :foreign_key => "author_id"	
+end
+
+class Bookmark < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :snippet
+end
+
+class Snippet < ActiveRecord::Base
+  belongs_to :author, :class_name => "User", :foreign_key => "author_id"	
+  has_many :bookmarks
+  has_many :users, :through => :bookmarks
+end
+
+@user.snippets
+@user.bookmarked_snippets
+@user.bookmarks.each do |bookmark|
+  puts bookmark.snippet
+end
+
+@snippet.author
+@snippet.watchers

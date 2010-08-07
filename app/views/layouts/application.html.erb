@@ -18,7 +18,7 @@
 	#head {
 		height: 60px;
 		#background: url("/images/header_bg.gif") repeat-x scroll 0 100%;
-		background-color: #2B2B2B;
+		#background-color: #2B2B2B;
 	}
 	#head h1 {
 		font-weight: bold;
@@ -38,7 +38,7 @@
 	.logo{
 		float:left;
 		padding-top: 3px;
-
+		
 	}
 	.usernav{
 		float:right;
@@ -68,24 +68,26 @@
 		width: 7em;
 		display: block;
 		text-align: center;
-		color: #E6E1DC;
-		font-weight: bold;
+		color: #369;
+		#font-weight: bold;
+		text-decoration:none;
 	}
 	.usernav a:hover{
-		background-color:#CC7833;
-		color:#E6E1DC;
-		text-decoration:none;
+		#background-color:#CC7833;
+		color:#408000;
+		#text-decoration:none;
+		text-decoration:underline;
 	}
 	.usernav li span.username{
 		padding-right: 1em;
-		color: #E6E1DC;
+		#color: #E6E1DC;
 	}
 	.rounded{
 		-moz-border-radius: 5px; 
 		-webkit-border-radius: 5px;
 	}
 	body {
-	background:transparent url("/images/background.gif") repeat-x scroll left top;
+	#background:transparent url("/images/background.gif") repeat-x scroll left top;
 	width:100%;
 	}
 	#register {
@@ -110,9 +112,9 @@
 </head>
 <body>
   <div id="head">
-	<div class="content clearfix">
+	<div class="content clearfix"ß>
 	  <div class="logo">	
-	     <h1 style="color:#CC7833">has_many</h1><h1 style="color:white"> :codes</h1>
+	     <h1 style="letter-spacing: -0.04em;colorr:#4A4652">has_many :codes</h1>
 	  </div>
 	  <div class="usernav">	
 		<ul>
@@ -131,6 +133,9 @@
   </div>	
 
 <div class="container showgridd">
+	  <div class="span-24 last">
+	  	<div style="border-bottom: 2px solid #E3E3E3;"></div>
+	  </div>
 	<hr class="space"/>
 	  <div class="span-18">
 		<% if notice %>
@@ -157,7 +162,7 @@
 		</div>	
 	  </div>
 	  <div class="span-24 last">
-	    Footer	
+	    has_many :codes is created by David Spindle	
 	  </div>
  </div>
   

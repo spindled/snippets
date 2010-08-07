@@ -1,20 +1,25 @@
 <style type="text/css">
   .recent {
 	#background-color: #6D9CBE;
-	background-color: #2B2B2B;
-	padding-left:1em;
-	color: white;
-	font-weight: bold;
+	#background-color: #2B2B2B;
+	#background-color: #E3E3E3;
+	#padding-left:.5em;
+	color: #4A4652;
+	#font-weight: bold;
   }
   .toprounded{
 	-moz-border-radius-topleft:4px;
 	-moz-border-radius-topright:4px;
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
+	border-bottom: 1px dotted #999999;
   }
   .list-contents {
 	padding-left: .5em;
 	padding-right: .5em;
+  }
+  .list-contents a {
+	color: #369;
   }
   .list-contents h4 {
 	margin-bottom: .5em;
@@ -72,20 +77,21 @@
 </style>
 
 <div class="span-18 last">
-	<div class="recent toprounded">
-		<span class="large">Recent Snippets</span>
+	<div class="recent toprounded" style="padding-bottom:1em">
+		<span style="font-size:1.3em;font-weight:bold;">Recent Snippets</span>
 	</div>	
 </div>
 
 <% @snippets.each do |snippet| %>
 <div class="span-15" style="background-color:grary">
 	<div class="list-contents list-top">
-		<h4><%= link_to snippet.title, edit_snippet_path(snippet), :style => "text-decoration: none" %></h4>
+		<h4><%= link_to snippet.title, edit_snippet_path(snippet), :style => "text-decoration: none;font-size:1.1em" %></h4>
 	</div>	
 </div>
 <div class="span-3 last" style="text-align: right">
 	<div class="list-contents list-top">
-		<%= link_to_remote "View", :url => {:action => 'view_content', :id => snippet.id} %>
+		<%= image_tag "star_faded.png" %> 
+		<%= link_to_remote image_tag("plus_faded.png"), :url => {:action => 'view_content', :id => snippet.id} %>
 	</div>	
 </div>
 <div class="span-18 last">
@@ -93,8 +99,9 @@
 </div>
 <div class="span-10" style="background-color:grary">
 	<div class="list-contents tag-list">
+		<%= image_tag "tag_green.png", :style => "float:left" %>
 		<ul>
-			<li class="first"><a href="#"><%= snippet.language.camelize %></a></li>
+			
 			<% snippet.tag_list.each do |tag| %>
 			<li><%= link_to tag, tag_url(:id => tag) %></li>
 			<% end %>
